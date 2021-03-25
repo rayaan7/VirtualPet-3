@@ -5,6 +5,7 @@ var feed,add;
 var foodobject;
 var Feedtime, Lastfeed;
 var bedroomImg, gardenImg, washroomImg;
+var gameState = null;
 
 function preload(){
   dogimg1 = loadImage("images/Dog.png");
@@ -42,6 +43,11 @@ function setup() {
   gameStateRef.on("value",function(data){
      gameState = data.val();
   })
+	
+	 var feedTimeRef = database.ref('FeedTime');
+  feedTimeRef.on("value",function(data){
+    Lastfeed = data.val();
+  });
 
 
 
